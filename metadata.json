@@ -1,0 +1,6 @@
+{
+  "name": "Guía Maestra de Documentos Escritos y Formato Académico",
+  "description": "Herramienta interactiva de consulta rápida con la receta exacta de Word, estructura universal de trabajos y 23 fichas completas de documentos escolares, universitarios y profesionales.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
