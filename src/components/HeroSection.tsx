@@ -47,13 +47,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             23 Tipos de Documentos
           </span>
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-xs">
-            🏫 Escolar (5) · 🎓 Universitario (9) · 💼 Profesional (9)
+            📄 Hoja Tipo Carta Oficial
+          </span>
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-xs font-medium">
+            📏 Márgenes UNELLEZ: Izq 4 cm · Der/Sup/Inf 3 cm
           </span>
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-xs">
-            📏 Medidas Word Exactas
-          </span>
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-xs">
-            📖 Normas APA 7.ª / 5.ª Ed.
+            ⚡ Interlineado 1.5 · Sin Sangría
           </span>
         </div>
 
