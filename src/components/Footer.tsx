@@ -16,16 +16,25 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPdfModal }) => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
           {/* Brand & Mission (5 cols) */}
           <div className="md:col-span-5 space-y-4">
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold">
-                <FileText className="w-4 h-4" />
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl overflow-hidden bg-slate-950 border border-blue-500/40 shadow-md flex items-center justify-center shrink-0">
+                <img
+                  src="/assets/aistudio/1794114511201_89211427.jpg"
+                  alt="Logo Más Educación"
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <span className="text-lg font-bold text-white tracking-tight">
-                Guía Maestra de Documentos Escritos
-              </span>
+              <div>
+                <span className="text-lg font-extrabold text-white tracking-tight block">
+                  Más Educación
+                </span>
+                <span className="text-xs text-blue-400 font-medium">
+                  Guía Maestra de Documentos Escritos
+                </span>
+              </div>
             </div>
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-              Herramienta interactiva de referencia para estudiantes, investigadores y profesionales. Desarrollada con base en los lineamientos de la <strong>Guía Universal de Trabajos Académicos</strong> y la <strong>Guía Completa de Documentos Escritos</strong>.
+              Herramienta interactiva de referencia de <strong>Más Educación</strong> para estudiantes, investigadores y profesionales. Desarrollada con base en los lineamientos de la <strong>Guía Universal de Trabajos Académicos</strong> y la <strong>Guía Completa de Documentos Escritos</strong>.
             </p>
             <div className="flex items-center gap-2 pt-2">
               <span className="text-xs px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700">
@@ -72,17 +81,17 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPdfModal }) => {
           {/* Tools & Resources (4 cols) */}
           <div className="md:col-span-4 space-y-3">
             <h4 className="text-xs font-bold text-white uppercase tracking-wider">
-              Recursos de Maquetación
+              Recursos de Maquetación Word
             </h4>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Descarga o copia las directrices para maquetar en formato Carta (Letter) con proporciones oficiales para imprimir o exportar a PDF (UNELLEZ Res. CD330 / Normas APA 7).
+              Descarga la plantilla editable de Microsoft Word (.doc) o copia el prompt para generar el documento en Word Carta (UNELLEZ Res. CD330 / Normas APA 7).
             </p>
             <button
               onClick={onOpenPdfModal}
-              className="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-semibold rounded-xl bg-blue-600 hover:bg-blue-500 text-white transition-colors"
+              className="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-semibold rounded-xl bg-blue-600 hover:bg-blue-500 text-white transition-colors cursor-pointer"
             >
-              <Download className="w-3.5 h-3.5" />
-              <span>Ver Prompt de Exportación a PDF</span>
+              <FileText className="w-3.5 h-3.5" />
+              <span>Plantilla y Prompt de Word</span>
             </button>
           </div>
         </div>
@@ -90,7 +99,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPdfModal }) => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p>
-            © {new Date().getFullYear()} Guía Maestra de Documentos Escritos. Consulta rápida para fines educativos y profesionales.
+            © {new Date().getFullYear()} Más Educación · Guía Maestra de Documentos Escritos. Consulta rápida para fines educativos y profesionales.
           </p>
 
           <button

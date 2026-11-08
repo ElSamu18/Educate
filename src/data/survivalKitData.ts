@@ -101,59 +101,91 @@ export const REVISION_PRACTICES = [
   }
 ];
 
-export const PDF_EXPORT_PROMPTS = {
-  unellez: `Por favor, aplica el siguiente estilo de formato a este documento antes de maquetarlo y exportarlo a PDF según la Normativa UNELLEZ (Resolución CD330 / CD300 para Trabajos Técnicos, Trabajos Especiales de Grado, Trabajos de Grado y Tesis Doctorales):
-1. Tamaño de página: Carta (Letter, 21.59 × 27.94 cm / 8.5 × 11 pulgadas).
-2. Márgenes de página:
-   - Margen izquierdo: 4.0 cm (destinado a encuadernación obligatoria).
-   - Margen derecho: 3.0 cm.
-   - Margen superior: 3.0 cm.
-   - Margen inferior: 3.0 cm.
-3. Tipografía obligatoria: Usa una sola fuente para todo el documento: Arial, Times New Roman o Courier New.
-   - Tamaño del cuerpo de texto: 12 pt.
-   - Títulos de capítulos: 12 o 14 pt en negrita destacada.
-   - Texto de tablas y figuras: 10 a 12 pt según necesidad de los datos.
-   - Citas textuales largas (>40 palabras o >3 líneas): 10 u 11 pt, en cursiva y con márgenes reducidos en bloque.
-   - Notas al pie de página: estrictamente 10 pt.
-4. Espaciado interlineal:
-   - Texto general y desarrollo: 1.5 (espacio y medio).
-   - Espacio simple (1.0): Para Resumen, Bibliografía, Notas al pie, citas textuales largas (>40 palabras) y títulos multilínea.
-5. Sangría y párrafos:
+export const WORD_EXPORT_PROMPTS = {
+  unellez: `Actúa como un maquetador editorial y formateador académico profesional en Microsoft Word. Transforma el contenido adjunto en un documento editable de Microsoft Word (.docx) listo para descargar y editar directamente, cumpliendo estrictamente con la Normativa Oficial UNELLEZ (Resolución CD330 / CD300 para Trabajos Técnicos, Trabajos Especiales de Grado, Trabajos de Grado y Tesis Doctorales):
+
+1. Formato de entrega:
+   - Entrega el documento en formato Microsoft Word (.docx) 100% editable y descargable (o genera el archivo descargable con todos los estilos de Word pre-configurados).
+   - Asigna los estilos nativos de Word: "Título 1" para capítulos principales, "Título 2" para subtítulos decimales (1.1, 1.2), "Título 3" para subapartados (1.1.1) y "Normal" para el cuerpo del texto.
+
+2. Tamaño de página y papel:
+   - Tamaño: Carta (Letter, 21.59 cm × 27.94 cm / 8.5 × 11 pulgadas).
+   - Orientación: Vertical obligatoria.
+
+3. Configuración de Márgenes en Word (Disposición > Márgenes personalizados):
+   - Margen Izquierdo: 4.0 cm (destinado a encuadernación oficial obligatoria).
+   - Margen Derecho: 3.0 cm.
+   - Margen Superior: 3.0 cm.
+   - Margen Inferior: 3.0 cm.
+   - Encuadernación adicional: 0 cm (ya contemplado en los 4.0 cm izquierdos).
+
+4. Tipografía y Estilos de Fuente en Word:
+   - Fuente única y uniforme en todo el documento: Arial, Times New Roman o Courier New (elige una sola).
+   - Cuerpo de texto normal: 12 puntos, texto justificado en ambos márgenes.
+   - Títulos de capítulos (Título 1): 12 o 14 puntos en Negrita destacada, centrado o justificado según el capítulo.
+   - Subtítulos de desarrollo (Título 2 y 3): 12 puntos en negrita con numeración decimal (1.1, 1.1.1).
+   - Tablas y Figuras: 10 a 12 puntos según volumen de datos.
+   - Notas al pie de página: 10 puntos a renglón sencillo (1.0).
+
+5. Espaciado e Interlineado en Word (Inicio > Párrafo):
+   - Texto general y desarrollo: 1.5 líneas (espacio y medio).
+   - Espacio simple (1.0): Para Resumen, Bibliografía, Notas al pie, títulos multilínea y citas textuales largas.
+   - Espaciado entre párrafos: Anterior 0 pto, Posterior 0 pto (sin dobles saltos artificiales).
+
+6. Sangrías de Párrafo:
    - Párrafos sin sangría inicial (0 cm / "sin sangrar").
    - Prevalece el margen de encuadernación izquierdo de 4.0 cm.
-   - Alineación justificada en ambos márgenes.
-6. Paginación:
-   - Números de página en la esquina superior derecha (o inferior según capítulo).
-   - Preliminares en números romanos en minúscula (i, ii, iii...); cuerpo en números arábigos (1, 2, 3...).
-7. Anexos / Apéndices:
-   - Ordenados alfabéticamente en mayúsculas (Anexo A, Anexo B...). Cada anexo debe iniciar obligatoriamente en una página separada e integrarse en la paginación final.`,
+   - Citas textuales largas (>40 palabras o más de tres líneas): párrafo aparte con sangría en bloque izquierda de 1.0 cm, tamaño 10 u 11 pt, interlineado sencillo (1.0) y en letra cursiva, sin comillas.
 
-  apa: `Por favor, aplica el siguiente estilo de formato a este documento antes de maquetarlo y exportarlo a PDF según las Normas APA (7.ª Edición Oficial):
-1. Tamaño de página: Carta (Letter, 21.59 × 27.94 cm / 8.5 × 11 pulgadas).
-2. Márgenes de página:
-   - 2.54 cm (1 pulgada) simétricos en los 4 bordes (superior, inferior, izquierdo y derecho).
-3. Tipografía permitida: Mantén una misma fuente en todo el documento. Elige una de las siguientes:
+7. Paginación y Estructura:
+   - Números de página ubicados en la esquina superior derecha (o inferior según la estructura).
+   - Páginas preliminares numeradas en romanos en minúscula (i, ii, iii...); cuerpo del trabajo en números arábigos (1, 2, 3...).
+   - Anexos / Apéndices alfabéticos (Anexo A, Anexo B...) iniciando obligatoriamente en salto de página individual.
+
+Genera y entrega este documento en formato Microsoft Word (.docx) descargable, editable, limpio y con todos los estilos de Word configurados para que el autor pueda abrirlo, editar el texto y guardarlo de inmediato.`,
+
+  apa: `Actúa como un maquetador editorial y formateador académico profesional en Microsoft Word. Transforma el contenido adjunto en un documento editable de Microsoft Word (.docx) listo para descargar y editar directamente, cumpliendo estrictamente con las Normas APA (7.ª Edición Oficial):
+
+1. Formato de entrega:
+   - Entrega el documento en formato Microsoft Word (.docx) 100% editable y descargable (o genera el archivo descargable con todos los estilos y plantillas nativas de Word aplicados).
+   - Asigna los estilos de Microsoft Word: "Título 1" (Nivel 1 APA), "Título 2" (Nivel 2 APA), "Título 3" (Nivel 3 APA) y "Normal" (Cuerpo APA).
+
+2. Tamaño de página y papel:
+   - Tamaño: Carta (Letter, 21.59 cm × 27.94 cm / 8.5 × 11 pulgadas).
+   - Orientación: Vertical.
+
+3. Configuración de Márgenes en Word (Disposición > Márgenes):
+   - 2.54 cm (1.0 pulgada) simétricos en los 4 bordes: Superior, Inferior, Izquierdo y Derecho.
+
+4. Tipografía permitida en Word (mantener una sola en todo el archivo):
    - Con serifa: Times New Roman 12 pt o Georgia 11 pt.
    - Sin serifa: Calibri 11 pt o Arial 11 pt.
-4. Espaciado interlineal:
-   - Interlineado Doble (2.0) estricto en todo el documento (cuerpo, resumen, citas en bloque y lista de referencias).
-   - Sin espacio extra entre párrafos (Espaciado anterior: 0 pto, posterior: 0 pto).
-5. Sangría y párrafos:
-   - Sangría de primera línea obligatoria: 1.27 cm (0.5 pulgadas / tecla Tab) al inicio de cada párrafo.
-   - Alineación del texto: Alineado a la izquierda ("ragged right" con margen derecho irregular, sin justificar).
-6. Jerarquía de Títulos APA 7:
-   - Nivel 1: Centrado, Negrita, Cada Palabra con Mayúscula.
-   - Nivel 2: Alineado a la izquierda, Negrita, Cada Palabra con Mayúscula.
-   - Nivel 3: Alineado a la izquierda, Negrita y Cursiva.
-7. Citas y Referencias:
-   - Citas cortas (<40 palabras): Entre comillas dentro del párrafo con (Apellido, Año, p. XX).
-   - Citas en bloque (>40 palabras): Párrafo aparte sin comillas, sangría izquierda de 1.27 cm en todo el bloque, interlineado doble (2.0).
-   - Lista de referencias: Orden alfabético con sangría francesa de 1.27 cm (0.5").
-8. Paginación:
-   - Número de página ubicado en la esquina superior derecha del encabezado en todas las páginas a partir de la portada (página 1).`
+   - Color de fuente: Automático / Negro.
+
+5. Espaciado e Interlineado en Word (Inicio > Párrafo):
+   - Interlineado Doble (2.0) estricto en todo el documento (portada, cuerpo, citas en bloque y lista de referencias).
+   - Sin espacio extra entre párrafos (Espaciado Anterior: 0 pto, Posterior: 0 pto).
+   - Alineación del texto: Alineado a la izquierda ("ragged right", margen derecho irregular, sin justificar).
+
+6. Sangrías de Párrafo (Pestaña Disposición > Párrafo):
+   - Sangría de primera línea obligatoria: 1.27 cm (0.5 pulgadas / tecla Tab) en la primera línea de cada párrafo del cuerpo.
+   - Citas en bloque (>40 palabras): Párrafo independiente sin comillas, con sangría izquierda de 1.27 cm en todo el bloque, manteniendo interlineado doble (2.0).
+   - Lista de Referencias finales: Orden alfabético con Sangría Francesa de 1.27 cm (0.5 pulgadas).
+
+7. Jerarquía de Títulos APA 7 en Word:
+   - Nivel 1: Centrado, Negrita, Título con Mayúsculas y Minúsculas.
+   - Nivel 2: Alineado a la izquierda, Negrita, Mayúsculas y Minúsculas.
+   - Nivel 3: Alineado a la izquierda, Negrita, Cursiva, Mayúsculas y Minúsculas.
+
+8. Paginación y Encabezado:
+   - Número de página ubicado en la esquina superior derecha del encabezado en todas las páginas comenzando desde la Portada (Página 1).
+
+Genera y entrega este documento en formato Microsoft Word (.docx) descargable, editable y listo para abrir en Word, completar los datos y guardar.`
 };
 
-export const PDF_EXPORT_PROMPT = PDF_EXPORT_PROMPTS.unellez;
+export const PDF_EXPORT_PROMPTS = WORD_EXPORT_PROMPTS;
+export const PDF_EXPORT_PROMPT = WORD_EXPORT_PROMPTS.unellez;
+export const WORD_EXPORT_PROMPT = WORD_EXPORT_PROMPTS.unellez;
 
 export const GLOSSARY_TERMS = [
   { term: 'Abstract', def: 'Resumen muy estructurado (200-300 palabras) de un artículo científico o TFG que condensa objetivos, metodología, resultados y conclusiones.' },

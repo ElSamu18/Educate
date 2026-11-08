@@ -67,3 +67,30 @@ test('calculateChecklistProgress calculates percentage and completion properly',
   assert.equal(progAll.percentage, 100);
   assert.equal(progAll.isComplete, true);
 });
+
+test('WORD_EXPORT_PROMPTS and generateWordHtmlContent produce valid Word layout definitions', async () => {
+  const { WORD_EXPORT_PROMPTS } = await import('../data/survivalKitData.ts');
+  const { generateWordHtmlContent } = await import('./wordDocumentGenerator.ts');
+
+  // Verify UNELLEZ Prompt instructs Word .docx output
+  assert.ok(WORD_EXPORT_PROMPTS.unellez.includes('Microsoft Word (.docx)'));
+  assert.ok(WORD_EXPORT_PROMPTS.unellez.includes('Carta (Letter, 21.59 cm × 27.94 cm'));
+  assert.ok(WORD_EXPORT_PROMPTS.unellez.includes('Margen Izquierdo: 4.0 cm'));
+  assert.ok(WORD_EXPORT_PROMPTS.unellez.includes('Margen Derecho: 3.0 cm'));
+
+  // Verify APA Prompt instructs Word .docx output
+  assert.ok(WORD_EXPORT_PROMPTS.apa.includes('Microsoft Word (.docx)'));
+  assert.ok(WORD_EXPORT_PROMPTS.apa.includes('Carta (Letter, 21.59 cm × 27.94 cm'));
+  assert.ok(WORD_EXPORT_PROMPTS.apa.includes('2.54 cm'));
+
+  // Verify Word HTML templates
+  const unellezHtml = generateWordHtmlContent('unellez');
+  assert.ok(unellezHtml.includes('urn:schemas-microsoft-com:office:word'));
+  assert.ok(unellezHtml.includes('margin: 3.0cm 3.0cm 3.0cm 4.0cm'));
+  assert.ok(unellezHtml.includes('21.59cm 27.94cm'));
+
+  const apaHtml = generateWordHtmlContent('apa');
+  assert.ok(apaHtml.includes('urn:schemas-microsoft-com:office:word'));
+  assert.ok(apaHtml.includes('margin: 2.54cm 2.54cm 2.54cm 2.54cm'));
+  assert.ok(apaHtml.includes('line-height: 2.0'));
+});

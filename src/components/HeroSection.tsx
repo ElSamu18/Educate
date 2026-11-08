@@ -21,16 +21,24 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Top Announcement Badge */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-100/90 dark:bg-blue-950/80 border border-blue-200 dark:border-blue-800/80 text-blue-900 dark:text-blue-300 text-xs sm:text-sm font-medium shadow-xs mb-6">
-          <Sparkles className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 animate-pulse" />
+        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-blue-100/90 dark:bg-blue-950/80 border border-blue-200 dark:border-blue-800/80 text-blue-950 dark:text-blue-300 text-xs sm:text-sm font-medium shadow-xs mb-6">
+          <div className="w-5 h-5 rounded-full overflow-hidden bg-slate-950 border border-blue-400/50 flex items-center justify-center shrink-0">
+            <img
+              src="/assets/aistudio/1794114511201_89211427.jpg"
+              alt="Más Educación"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <span className="font-bold text-blue-700 dark:text-blue-300">Más Educación</span>
+          <span className="text-slate-400 dark:text-slate-600">•</span>
           <span>Manual de Consulta Rápida: Guía Universal + 23 Documentos</span>
         </div>
 
         {/* Main Title */}
         <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight sm:leading-tight">
-          La Guía Definitiva de{' '}
+          Más Educación:{' '}
           <span className="bg-gradient-to-r from-blue-700 via-indigo-600 to-sky-600 bg-clip-text text-transparent dark:from-blue-400 dark:via-indigo-300 dark:to-sky-300">
-            Documentos Escritos
+            Guía de Documentos Escritos
           </span>{' '}
           y Formato Académico
         </h1>

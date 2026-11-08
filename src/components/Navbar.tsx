@@ -46,20 +46,24 @@ export const Navbar: React.FC<NavbarProps> = ({
             href="#"
             className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg p-1"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 via-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform">
-              <FileText className="w-5 h-5" />
+            <div className="relative w-10 h-10 rounded-xl overflow-hidden bg-slate-950 border border-blue-500/30 shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform flex items-center justify-center shrink-0">
+              <img
+                src="/assets/aistudio/1794114511201_89211427.jpg"
+                alt="Logo Más Educación"
+                className="w-full h-full object-cover"
+              />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-bold text-base sm:text-lg tracking-tight text-slate-900 dark:text-white">
-                  Guía Maestra
+                <span className="font-extrabold text-base sm:text-lg tracking-tight text-slate-900 dark:text-white">
+                  Más Educación
                 </span>
                 <span className="hidden sm:inline-block px-2 py-0.5 text-xs font-semibold rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900/60 dark:text-blue-300">
-                  23 Docs + Word
+                  Guía Maestra
                 </span>
               </div>
               <p className="text-xs text-slate-500 dark:text-slate-400 hidden sm:block">
-                Académica & Profesional
+                Formato Académico & Profesional
               </p>
             </div>
           </a>
@@ -85,12 +89,12 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="flex items-center gap-2">
             <button
               onClick={onOpenPdfModal}
-              title="Guía de exportación a PDF"
-              aria-label="Exportar a PDF"
-              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              title="Descargar plantilla y prompt editable de Microsoft Word"
+              aria-label="Plantilla Word editable"
+              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-blue-200 dark:border-blue-800/80 bg-blue-50/70 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 hover:bg-blue-100 transition-colors cursor-pointer"
             >
-              <Download className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-              <span>Prompt PDF</span>
+              <FileText className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+              <span>Plantilla Word (.doc)</span>
             </button>
 
             <button
@@ -145,10 +149,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                 setMobileMenuOpen(false);
                 onOpenPdfModal();
               }}
-              className="w-full flex items-center gap-3 px-3 py-2 text-sm font-medium text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-slate-800 rounded-lg"
+              className="w-full flex items-center gap-3 px-3 py-2 text-sm font-medium text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-slate-800 rounded-lg cursor-pointer"
             >
-              <Download className="w-4 h-4" />
-              <span>Prompt de Exportación PDF</span>
+              <FileText className="w-4 h-4" />
+              <span>Plantilla Word y Prompt (.docx)</span>
             </button>
           </div>
         )}

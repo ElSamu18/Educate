@@ -4,11 +4,12 @@ import {
   INVERTED_PYRAMID,
   LANGUAGE_ECONOMY_TIPS,
   REVISION_PRACTICES,
+  WORD_EXPORT_PROMPTS,
   PDF_EXPORT_PROMPTS,
-  PDF_EXPORT_PROMPT,
   GLOSSARY_TERMS,
   LETHAL_CHECKLIST_ITEMS
 } from '../data/survivalKitData';
+import { downloadWordTemplate } from '../utils/wordDocumentGenerator';
 import { calculateChecklistProgress } from '../utils/searchFilter';
 import {
   Sparkles,
@@ -25,7 +26,8 @@ import {
   ArrowRight,
   Flame,
   Award,
-  Download
+  Download,
+  FileText
 } from 'lucide-react';
 
 interface SurvivalKitProps {
@@ -285,42 +287,61 @@ export const SurvivalKitSection: React.FC<SurvivalKitProps> = ({ onOpenPdfModal 
           </div>
         </div>
 
-        {/* 4. PROMPT PARA MAQUETACIÓN A PDF */}
+        {/* 4. PROMPT PARA MAQUETACIÓN EN MICROSOFT WORD EDITABLE */}
         <div className="bg-gradient-to-r from-blue-900 via-indigo-950 to-slate-950 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-blue-800 space-y-5">
           <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
             <div>
               <div className="flex flex-wrap items-center gap-2 mb-2">
-                <span className="px-3 py-1 rounded-full text-xs font-bold bg-blue-500/20 text-blue-200 border border-blue-400/30 inline-block">
-                  Prompt de Maquetación Universal
+                <span className="px-3 py-1 rounded-full text-xs font-bold bg-blue-500/20 text-blue-200 border border-blue-400/30 inline-flex items-center gap-1.5">
+                  <FileText className="w-3.5 h-3.5 text-blue-300" />
+                  <span>Prompt de Maquetación Universal · Word (.docx Editable)</span>
                 </span>
                 <span className="px-3 py-1 rounded-full text-xs font-bold bg-amber-400/20 text-amber-200 border border-amber-400/30 inline-flex items-center gap-1.5">
                   📄 Hoja Tipo Carta (8.5 × 11")
                 </span>
+                <span className="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 inline-flex items-center gap-1.5">
+                  ⚡ 100% Descargable y Editable
+                </span>
               </div>
               <h3 className="text-xl sm:text-2xl font-bold tracking-tight">
-                Instrucciones de Exportación a PDF para Diseñadores, Word o IA
+                Instrucciones para Generar Documento en Word (.docx) Editable
               </h3>
-              <p className="mt-1 text-xs sm:text-sm text-blue-200 max-w-2xl">
-                Copia y pega este prompt exacto en Canva, Microsoft Word, Google Docs o en un asistente de IA para maquetar tu documento final en formato <strong>Carta</strong> con precisión milimétrica.
+              <p className="mt-1 text-xs sm:text-sm text-blue-200 max-w-2xl leading-relaxed">
+                Pega este prompt en ChatGPT, Claude, Gemini o en tu procesador de textos para que la IA transforme tu trabajo directamente en un <strong>archivo de Word (.docx) listo para descargar y editar</strong>, con márgenes exactos, fuentes autorizadas, interlineados y estilos de título oficiales.
               </p>
             </div>
 
-            <button
-              onClick={handleCopyPrompt}
-              className="inline-flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-semibold rounded-xl bg-white text-blue-950 hover:bg-blue-50 transition-all shadow-md shrink-0 hover:scale-[1.02] active:scale-[0.98]"
-            >
-              {copiedPrompt ? (
-                <>
-                  <Check className="w-4 h-4 text-emerald-600" />
-                  <span>¡Prompt Copiado!</span>
-                </>
-              ) : (
-                <>
-                  <Copy className="w-4 h-4 text-blue-900" />
-                  <span>Copiar Prompt ({promptNormative === 'unellez' ? 'UNELLEZ' : 'APA 7'})</span>
-                </>
-              )}
-            </button>
+            <div className="flex flex-wrap items-center gap-2.5 shrink-0">
+              {/* Direct Download Word Button */}
+              <button
+                type="button"
+                onClick={() => downloadWordTemplate(promptNormative)}
+                className="inline-flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white shadow-md shadow-emerald-900/30 transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+                title="Descargar plantilla editable inmediata para Microsoft Word"
+              >
+                <Download className="w-4 h-4" />
+                <span>Descargar Word Editable (.doc)</span>
+              </button>
+
+              {/* Copy Word Prompt Button */}
+              <button
+                type="button"
+                onClick={handleCopyPrompt}
+                className="inline-flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-semibold rounded-xl bg-white text-blue-950 hover:bg-blue-50 transition-all shadow-md shrink-0 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+              >
+                {copiedPrompt ? (
+                  <>
+                    <Check className="w-4 h-4 text-emerald-600" />
+                    <span>¡Prompt Word Copiado!</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-4 h-4 text-blue-900" />
+                    <span>Copiar Prompt ({promptNormative === 'unellez' ? 'UNELLEZ' : 'APA 7'})</span>
+                  </>
+                )}
+              </button>
+            </div>
           </div>
 
           {/* Normative Toggle Switch Buttons for Prompt */}
@@ -328,54 +349,56 @@ export const SurvivalKitSection: React.FC<SurvivalKitProps> = ({ onOpenPdfModal 
             <button
               type="button"
               onClick={() => setPromptNormative('unellez')}
-              className={`w-full sm:w-1/2 py-2 px-3 text-xs sm:text-sm font-bold rounded-lg transition-all text-center flex items-center justify-center gap-2 ${
+              className={`w-full sm:w-1/2 py-2 px-3 text-xs sm:text-sm font-bold rounded-lg transition-all text-center flex items-center justify-center gap-2 cursor-pointer ${
                 promptNormative === 'unellez'
                   ? 'bg-blue-600 text-white shadow-md'
                   : 'text-blue-200 hover:text-white hover:bg-blue-900/40'
               }`}
             >
-              <span>🏛️ Normativa UNELLEZ (Resolución CD330 / CD300)</span>
+              <span>🏛️ Normativa UNELLEZ (Resolución CD330 / CD300) · Word Carta</span>
             </button>
 
             <button
               type="button"
               onClick={() => setPromptNormative('apa')}
-              className={`w-full sm:w-1/2 py-2 px-3 text-xs sm:text-sm font-bold rounded-lg transition-all text-center flex items-center justify-center gap-2 ${
+              className={`w-full sm:w-1/2 py-2 px-3 text-xs sm:text-sm font-bold rounded-lg transition-all text-center flex items-center justify-center gap-2 cursor-pointer ${
                 promptNormative === 'apa'
                   ? 'bg-indigo-600 text-white shadow-md'
                   : 'text-blue-200 hover:text-white hover:bg-blue-900/40'
               }`}
             >
-              <span>📖 Normas APA (7.ª Edición Oficial)</span>
+              <span>📖 Normas APA (7.ª Edición Oficial) · Word Carta</span>
             </button>
           </div>
 
           {/* Quick Specifications Tagline */}
           <div className="flex flex-wrap items-center gap-3 text-xs text-blue-200/90 font-mono bg-blue-950/60 p-2.5 rounded-xl border border-blue-800/60">
-            <span className="font-sans font-bold text-white">Especificaciones aplicadas:</span>
+            <span className="font-sans font-bold text-white">Parámetros Word aplicados:</span>
             <span>📄 Papel Carta (21.59 × 27.94 cm)</span>
             <span>•</span>
             {promptNormative === 'unellez' ? (
               <>
-                <span>📏 Márgenes: Izq 4.0 cm · Der/Sup/Inf 3.0 cm</span>
+                <span>📏 Márgenes Word: Izq 4.0 cm · Der/Sup/Inf 3.0 cm</span>
                 <span>•</span>
                 <span>⚡ Interlineado: 1.5</span>
                 <span>•</span>
-                <span>Sin sangría inicial</span>
+                <span>Estilo: Sin sangría inicial (0 cm)</span>
               </>
             ) : (
               <>
-                <span>📏 Márgenes: 2.54 cm simétricos (1")</span>
+                <span>📏 Márgenes Word: 2.54 cm simétricos (1")</span>
                 <span>•</span>
                 <span>⚡ Interlineado: 2.0 Doble</span>
                 <span>•</span>
                 <span>Sangría: 1.27 cm (0.5")</span>
               </>
             )}
+            <span>•</span>
+            <span className="text-emerald-300 font-sans font-bold">Entrega: Archivo Word (.docx)</span>
           </div>
 
           <pre className="p-4 bg-slate-950/90 rounded-2xl border border-blue-500/30 text-blue-100 font-mono text-xs overflow-x-auto whitespace-pre-wrap leading-relaxed max-h-96">
-            {PDF_EXPORT_PROMPTS[promptNormative]}
+            {WORD_EXPORT_PROMPTS[promptNormative]}
           </pre>
         </div>
 
