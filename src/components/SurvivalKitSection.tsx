@@ -123,8 +123,9 @@ export const SurvivalKitSection: React.FC<SurvivalKitProps> = ({ onOpenPdfModal 
                       {guide.title}
                     </span>
                     <button
+                      type="button"
                       onClick={() => handleCopyApa(guide.id, guide.example)}
-                      className="inline-flex items-center gap-1 text-[11px] font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400"
+                      className="inline-flex items-center gap-1 text-[11px] font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400 cursor-pointer"
                     >
                       {copiedApaId === guide.id ? (
                         <>
@@ -454,9 +455,10 @@ export const SurvivalKitSection: React.FC<SurvivalKitProps> = ({ onOpenPdfModal 
                 </span>
               </div>
               <button
+                type="button"
                 onClick={resetChecklist}
                 title="Reiniciar casillas"
-                className="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded-lg border border-slate-200 dark:border-slate-700"
+                className="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer"
               >
                 <RotateCcw className="w-4 h-4" />
               </button>
@@ -489,10 +491,13 @@ export const SurvivalKitSection: React.FC<SurvivalKitProps> = ({ onOpenPdfModal 
             {LETHAL_CHECKLIST_ITEMS.map((item, idx) => {
               const isChecked = Boolean(checkedErrors[item.id]);
               return (
-                <div
+                <button
+                  type="button"
                   key={item.id}
+                  role="checkbox"
+                  aria-checked={isChecked}
                   onClick={() => toggleErrorCheck(item.id)}
-                  className={`p-4 rounded-2xl border transition-all cursor-pointer flex items-start gap-3.5 select-none ${
+                  className={`w-full text-left p-4 rounded-2xl border transition-all cursor-pointer flex items-start gap-3.5 select-none ${
                     isChecked
                       ? 'bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-800/60'
                       : 'bg-slate-50/70 dark:bg-slate-800/40 border-slate-200 dark:border-slate-700/60 hover:border-rose-300 dark:hover:border-rose-800'
@@ -528,7 +533,7 @@ export const SurvivalKitSection: React.FC<SurvivalKitProps> = ({ onOpenPdfModal 
                       💡 <strong>Cómo evitarlo:</strong> {item.tip}
                     </p>
                   </div>
-                </div>
+                </button>
               );
             })}
           </div>

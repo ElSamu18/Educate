@@ -108,8 +108,9 @@ export const DocumentCard: React.FC<DocumentCardProps> = ({
         {/* Collapsible: Estructura Obligatoria (Numbered Steps) */}
         <div className="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
           <button
+            type="button"
             onClick={() => setIsStructureOpen(!isStructureOpen)}
-            className="w-full flex items-center justify-between p-3 bg-slate-50 hover:bg-slate-100 dark:bg-slate-800/70 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs sm:text-sm font-semibold transition-colors"
+            className="w-full flex items-center justify-between p-3 bg-slate-50 hover:bg-slate-100 dark:bg-slate-800/70 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs sm:text-sm font-semibold transition-colors cursor-pointer"
             aria-expanded={isStructureOpen}
           >
             <span className="flex items-center gap-2">
@@ -169,8 +170,9 @@ export const DocumentCard: React.FC<DocumentCardProps> = ({
               Micro-Plantilla / Ejemplo Real:
             </span>
             <button
+              type="button"
               onClick={handleCopyTemplate}
-              className="inline-flex items-center gap-1.5 px-2 py-1 text-[11px] font-semibold rounded-md bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors shadow-2xs"
+              className="inline-flex items-center gap-1.5 px-2 py-1 text-[11px] font-semibold rounded-md bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors shadow-2xs cursor-pointer"
             >
               {copiedTemplate ? (
                 <>
@@ -193,8 +195,10 @@ export const DocumentCard: React.FC<DocumentCardProps> = ({
         {/* Collapsible: Checklist de Verificación Final */}
         <div className="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
           <button
+            type="button"
             onClick={() => setIsChecklistOpen(!isChecklistOpen)}
-            className="w-full flex items-center justify-between p-2.5 bg-slate-50/70 hover:bg-slate-100 dark:bg-slate-800/40 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold transition-colors"
+            className="w-full flex items-center justify-between p-2.5 bg-slate-50/70 hover:bg-slate-100 dark:bg-slate-800/40 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold transition-colors cursor-pointer"
+            aria-expanded={isChecklistOpen}
           >
             <span className="flex items-center gap-2">
               <BookmarkCheck className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
@@ -212,22 +216,25 @@ export const DocumentCard: React.FC<DocumentCardProps> = ({
               {document.checklist.map((item, idx) => {
                 const isChecked = Boolean(checkedItems[idx]);
                 return (
-                  <label
+                  <button
+                    type="button"
                     key={idx}
+                    role="checkbox"
+                    aria-checked={isChecked}
                     onClick={() => toggleCheck(idx)}
-                    className="flex items-start gap-2.5 text-slate-700 dark:text-slate-300 cursor-pointer hover:text-slate-900 dark:hover:text-white select-none"
+                    className="flex items-start text-left gap-2.5 text-slate-700 dark:text-slate-300 cursor-pointer hover:text-slate-900 dark:hover:text-white select-none w-full group transition-colors"
                   >
-                    <span className="mt-0.5 text-emerald-600 dark:text-emerald-400">
+                    <span className="mt-0.5 text-emerald-600 dark:text-emerald-400 shrink-0">
                       {isChecked ? (
                         <CheckSquare className="w-4 h-4 text-emerald-600" />
                       ) : (
-                        <Square className="w-4 h-4 text-slate-300 dark:text-slate-600" />
+                        <Square className="w-4 h-4 text-slate-300 dark:text-slate-600 group-hover:text-slate-400" />
                       )}
                     </span>
                     <span className={isChecked ? 'line-through opacity-60' : ''}>
                       {item}
                     </span>
-                  </label>
+                  </button>
                 );
               })}
             </div>

@@ -80,8 +80,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             />
             {searchQuery && (
               <button
+                type="button"
                 onClick={() => setSearchQuery('')}
-                className="p-1.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded-full"
+                className="p-1.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded-full cursor-pointer"
                 aria-label="Limpiar búsqueda"
               >
                 <X className="w-4 h-4" />

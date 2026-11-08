@@ -216,6 +216,7 @@ export const DocumentsSection: React.FC<DocumentsSectionProps> = ({
           <div className="flex flex-wrap items-center gap-2 self-start md:self-auto shrink-0">
             {allGradesOpen ? (
               <button
+                type="button"
                 onClick={collapseAllGrades}
                 className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors shadow-2xs cursor-pointer"
                 title="Plegar los 3 grados académicos"
@@ -225,6 +226,7 @@ export const DocumentsSection: React.FC<DocumentsSectionProps> = ({
               </button>
             ) : (
               <button
+                type="button"
                 onClick={expandAllGrades}
                 className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 hover:bg-blue-100 transition-colors shadow-2xs cursor-pointer"
                 title="Desplegar los 3 grados académicos a la vez"
@@ -235,6 +237,7 @@ export const DocumentsSection: React.FC<DocumentsSectionProps> = ({
             )}
 
             <button
+              type="button"
               onClick={() => setExpandAllStructures(!expandAllStructures)}
               className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors shadow-2xs cursor-pointer"
               title="Expandir o plegar los pasos numerados de las fichas abiertas"
@@ -257,6 +260,7 @@ export const DocumentsSection: React.FC<DocumentsSectionProps> = ({
         {/* Category Navigation Pills / Quick Selectors */}
         <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-4 mb-6">
           <button
+            type="button"
             onClick={() => handleTabClick('all')}
             className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
               activeCategory === 'all'
@@ -279,6 +283,7 @@ export const DocumentsSection: React.FC<DocumentsSectionProps> = ({
 
             return (
               <button
+                type="button"
                 key={grade.id}
                 onClick={() => {
                   handleTabClick(grade.id);
@@ -323,6 +328,7 @@ export const DocumentsSection: React.FC<DocumentsSectionProps> = ({
               </span>
             </div>
             <button
+              type="button"
               onClick={() => setSearchQuery('')}
               className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-lg text-rose-700 dark:text-rose-400 bg-rose-100 dark:bg-rose-950/60 hover:bg-rose-200 transition-colors shrink-0 cursor-pointer"
             >
@@ -345,6 +351,7 @@ export const DocumentsSection: React.FC<DocumentsSectionProps> = ({
               No hay documentos que coincidan con "{searchQuery}". Intenta con palabras clave como "ensayo", "informe", "acta", "monografía" o "resumen".
             </p>
             <button
+              type="button"
               onClick={() => {
                 setSearchQuery('');
                 setActiveCategory('all');
@@ -503,6 +510,7 @@ export const DocumentsSection: React.FC<DocumentsSectionProps> = ({
               Haz clic en cualquiera de las 3 tarjetas superiores o presiona el botón a continuación para desplegar todos los documentos.
             </p>
             <button
+              type="button"
               onClick={expandAllGrades}
               className="mt-3 inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-sm transition-colors cursor-pointer"
             >

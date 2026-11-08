@@ -88,6 +88,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Action buttons */}
           <div className="flex items-center gap-2">
             <button
+              type="button"
               onClick={onOpenPdfModal}
               title="Descargar plantilla y prompt editable de Microsoft Word"
               aria-label="Plantilla Word editable"
@@ -98,28 +99,31 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
 
             <button
+              type="button"
               onClick={handlePrint}
               title="Imprimir o Guardar como PDF"
               aria-label="Imprimir documento"
-              className="p-2 text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              className="p-2 text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
             >
               <Printer className="w-4 h-4" />
             </button>
 
             {/* Dark Mode Toggle */}
             <button
+              type="button"
               onClick={toggleDarkMode}
               title={isDarkMode ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
               aria-label="Alternar modo oscuro"
-              className="p-2 text-slate-600 hover:text-blue-600 dark:text-slate-400 dark:hover:text-amber-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              className="p-2 text-slate-600 hover:text-blue-600 dark:text-slate-400 dark:hover:text-amber-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
             >
               {isDarkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </button>
 
             {/* Mobile menu trigger */}
             <button
+              type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
+              className="md:hidden p-2 text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer"
               aria-label="Abrir menú"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -145,6 +149,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               );
             })}
             <button
+              type="button"
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenPdfModal();

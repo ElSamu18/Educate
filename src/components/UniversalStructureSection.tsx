@@ -45,6 +45,7 @@ export const UniversalStructureSection: React.FC = () => {
             const isActive = step.id === activeStepId;
             return (
               <button
+                type="button"
                 key={step.id}
                 onClick={() => setActiveStepId(step.id)}
                 className={`flex flex-col text-left p-3.5 rounded-2xl border transition-all cursor-pointer relative overflow-hidden ${
@@ -126,22 +127,24 @@ export const UniversalStructureSection: React.FC = () => {
               <div className="pt-4 flex items-center gap-2 border-t border-slate-100 dark:border-slate-800">
                 {currentStep.stepNumber > 1 && (
                   <button
+                    type="button"
                     onClick={() =>
                       setActiveStepId(
                         UNIVERSAL_STEPS[currentStep.stepNumber - 2].id
                       )
                     }
-                    className="px-3 py-1.5 text-xs font-medium rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300"
+                    className="px-3 py-1.5 text-xs font-medium rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors cursor-pointer"
                   >
                     ← Paso Anterior ({UNIVERSAL_STEPS[currentStep.stepNumber - 2].title})
                   </button>
                 )}
                 {currentStep.stepNumber < UNIVERSAL_STEPS.length && (
                   <button
+                    type="button"
                     onClick={() =>
                       setActiveStepId(UNIVERSAL_STEPS[currentStep.stepNumber].id)
                     }
-                    className="px-3 py-1.5 text-xs font-medium rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white shadow-xs ml-auto"
+                    className="px-3 py-1.5 text-xs font-medium rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white shadow-xs ml-auto transition-colors cursor-pointer"
                   >
                     Siguiente Paso ({UNIVERSAL_STEPS[currentStep.stepNumber].title}) →
                   </button>

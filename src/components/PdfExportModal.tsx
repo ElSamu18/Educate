@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { WORD_EXPORT_PROMPTS } from '../data/survivalKitData';
 import { downloadWordTemplate } from '../utils/wordDocumentGenerator';
 import { X, Copy, Check, Download, FileText, CheckCircle2, BookmarkCheck, FileCheck2 } from 'lucide-react';
@@ -11,6 +11,18 @@ interface PdfExportModalProps {
 export const PdfExportModal: React.FC<PdfExportModalProps> = ({ isOpen, onClose }) => {
   const [normative, setNormative] = useState<'unellez' | 'apa'>('unellez');
   const [copied, setCopied] = useState(false);
+
+  // Close on Escape key press
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
@@ -31,9 +43,17 @@ export const PdfExportModal: React.FC<PdfExportModalProps> = ({ isOpen, onClose 
       role="dialog"
       aria-modal="true"
       aria-labelledby="word-modal-title"
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/70 backdrop-blur-xs"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          onClose();
+        }
+      }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/70 backdrop-blur-xs cursor-pointer"
     >
-      <div className="relative w-full max-w-3xl bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl p-6 sm:p-8 space-y-5 animate-in fade-in zoom-in-95 duration-150">
+      <div 
+        onClick={(e) => e.stopPropagation()} 
+        className="relative w-full max-w-3xl bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl p-6 sm:p-8 space-y-5 animate-in fade-in zoom-in-95 duration-150 cursor-default"
+      >
         {/* Header */}
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-3">
@@ -59,6 +79,7 @@ export const PdfExportModal: React.FC<PdfExportModalProps> = ({ isOpen, onClose 
           </div>
 
           <button
+            type="button"
             onClick={onClose}
             className="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
             aria-label="Cerrar modal"
@@ -116,6 +137,7 @@ export const PdfExportModal: React.FC<PdfExportModalProps> = ({ isOpen, onClose 
 
           <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto justify-end">
             <button
+              type="button"
               onClick={handleDownload}
               className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white shadow-sm transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
               title="Descargar archivo Word (.doc) directo"
@@ -125,6 +147,7 @@ export const PdfExportModal: React.FC<PdfExportModalProps> = ({ isOpen, onClose 
             </button>
 
             <button
+              type="button"
               onClick={handleCopy}
               className="inline-flex items-center justify-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-xl bg-blue-600 hover:bg-blue-700 text-white shadow-md shadow-blue-500/20 transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
             >
@@ -142,6 +165,7 @@ export const PdfExportModal: React.FC<PdfExportModalProps> = ({ isOpen, onClose 
             </button>
 
             <button
+              type="button"
               onClick={onClose}
               className="px-3.5 py-2 text-xs font-semibold rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors cursor-pointer"
             >

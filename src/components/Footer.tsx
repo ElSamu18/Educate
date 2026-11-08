@@ -87,6 +87,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPdfModal }) => {
               Descarga la plantilla editable de Microsoft Word (.doc) o copia el prompt para generar el documento en Word Carta (UNELLEZ Res. CD330 / Normas APA 7).
             </p>
             <button
+              type="button"
               onClick={onOpenPdfModal}
               className="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-semibold rounded-xl bg-blue-600 hover:bg-blue-500 text-white transition-colors cursor-pointer"
             >
@@ -103,8 +104,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPdfModal }) => {
           </p>
 
           <button
+            type="button"
             onClick={scrollToTop}
-            className="flex items-center gap-1.5 hover:text-white transition-colors"
+            className="flex items-center gap-1.5 hover:text-white transition-colors cursor-pointer"
           >
             <span>Volver arriba</span>
             <ArrowUp className="w-4 h-4" />
