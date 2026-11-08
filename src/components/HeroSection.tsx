@@ -50,10 +50,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             📄 Hoja Tipo Carta Oficial
           </span>
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-xs font-medium">
-            📏 Márgenes UNELLEZ: Izq 4 cm · Der/Sup/Inf 3 cm
+            📏 UNELLEZ (Res. CD330) & Normas APA 7.ª Ed.
           </span>
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-xs">
-            ⚡ Interlineado 1.5 · Sin Sangría
+            ⚡ Simulador y Comparativa en Vivo
           </span>
         </div>
 
