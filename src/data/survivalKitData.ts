@@ -101,17 +101,59 @@ export const REVISION_PRACTICES = [
   }
 ];
 
-export const PDF_EXPORT_PROMPT = `Por favor, aplica el siguiente estilo de formato a este documento antes de exportarlo a PDF:
-1. Tamaño de página: A4 (210 x 297 mm).
-2. Márgenes: Normales o moderados (2.5 cm en los cuatro bordes).
-3. Tipografía principal: Usa una fuente sans-serif profesional para los títulos (ej. Arial, Helvetica o Montserrat) y una serif altamente legible para el cuerpo del texto (ej. Times New Roman, Garamond o Georgia). Tamaño del cuerpo: 11 o 12 pt. Interlineado: 1.15 o 1.5.
-4. Jerarquía visual:
-   - H1 (Título principal): 24 pt, Negrita, Centrado.
-   - H2 (Secciones mayores): 18 pt, Negrita, color de contraste oscuro (ej. Azul marino).
-   - H3 (Nombres de documentos): 14 pt, Negrita.
-5. Diseño de Portada: Dedica una página exclusiva para el título principal, subtítulo, y añade un espacio para el nombre del autor y la fecha actual.
-6. Paginación: Inserta números de página en la esquina inferior derecha a partir de la página de introducción.
-7. Saltos de página: Asegúrate de que los títulos de la sección (A, B y C) comiencen siempre en una nueva página impar para dar un respiro visual al lector.`;
+export const PDF_EXPORT_PROMPTS = {
+  unellez: `Por favor, aplica el siguiente estilo de formato a este documento antes de maquetarlo y exportarlo a PDF según la Normativa UNELLEZ (Resolución CD330 / CD300 para Trabajos Técnicos, Trabajos Especiales de Grado, Trabajos de Grado y Tesis Doctorales):
+1. Tamaño de página: Carta (Letter, 21.59 × 27.94 cm / 8.5 × 11 pulgadas).
+2. Márgenes de página:
+   - Margen izquierdo: 4.0 cm (destinado a encuadernación obligatoria).
+   - Margen derecho: 3.0 cm.
+   - Margen superior: 3.0 cm.
+   - Margen inferior: 3.0 cm.
+3. Tipografía obligatoria: Usa una sola fuente para todo el documento: Arial, Times New Roman o Courier New.
+   - Tamaño del cuerpo de texto: 12 pt.
+   - Títulos de capítulos: 12 o 14 pt en negrita destacada.
+   - Texto de tablas y figuras: 10 a 12 pt según necesidad de los datos.
+   - Citas textuales largas (>40 palabras o >3 líneas): 10 u 11 pt, en cursiva y con márgenes reducidos en bloque.
+   - Notas al pie de página: estrictamente 10 pt.
+4. Espaciado interlineal:
+   - Texto general y desarrollo: 1.5 (espacio y medio).
+   - Espacio simple (1.0): Para Resumen, Bibliografía, Notas al pie, citas textuales largas (>40 palabras) y títulos multilínea.
+5. Sangría y párrafos:
+   - Párrafos sin sangría inicial (0 cm / "sin sangrar").
+   - Prevalece el margen de encuadernación izquierdo de 4.0 cm.
+   - Alineación justificada en ambos márgenes.
+6. Paginación:
+   - Números de página en la esquina superior derecha (o inferior según capítulo).
+   - Preliminares en números romanos en minúscula (i, ii, iii...); cuerpo en números arábigos (1, 2, 3...).
+7. Anexos / Apéndices:
+   - Ordenados alfabéticamente en mayúsculas (Anexo A, Anexo B...). Cada anexo debe iniciar obligatoriamente en una página separada e integrarse en la paginación final.`,
+
+  apa: `Por favor, aplica el siguiente estilo de formato a este documento antes de maquetarlo y exportarlo a PDF según las Normas APA (7.ª Edición Oficial):
+1. Tamaño de página: Carta (Letter, 21.59 × 27.94 cm / 8.5 × 11 pulgadas).
+2. Márgenes de página:
+   - 2.54 cm (1 pulgada) simétricos en los 4 bordes (superior, inferior, izquierdo y derecho).
+3. Tipografía permitida: Mantén una misma fuente en todo el documento. Elige una de las siguientes:
+   - Con serifa: Times New Roman 12 pt o Georgia 11 pt.
+   - Sin serifa: Calibri 11 pt o Arial 11 pt.
+4. Espaciado interlineal:
+   - Interlineado Doble (2.0) estricto en todo el documento (cuerpo, resumen, citas en bloque y lista de referencias).
+   - Sin espacio extra entre párrafos (Espaciado anterior: 0 pto, posterior: 0 pto).
+5. Sangría y párrafos:
+   - Sangría de primera línea obligatoria: 1.27 cm (0.5 pulgadas / tecla Tab) al inicio de cada párrafo.
+   - Alineación del texto: Alineado a la izquierda ("ragged right" con margen derecho irregular, sin justificar).
+6. Jerarquía de Títulos APA 7:
+   - Nivel 1: Centrado, Negrita, Cada Palabra con Mayúscula.
+   - Nivel 2: Alineado a la izquierda, Negrita, Cada Palabra con Mayúscula.
+   - Nivel 3: Alineado a la izquierda, Negrita y Cursiva.
+7. Citas y Referencias:
+   - Citas cortas (<40 palabras): Entre comillas dentro del párrafo con (Apellido, Año, p. XX).
+   - Citas en bloque (>40 palabras): Párrafo aparte sin comillas, sangría izquierda de 1.27 cm en todo el bloque, interlineado doble (2.0).
+   - Lista de referencias: Orden alfabético con sangría francesa de 1.27 cm (0.5").
+8. Paginación:
+   - Número de página ubicado en la esquina superior derecha del encabezado en todas las páginas a partir de la portada (página 1).`
+};
+
+export const PDF_EXPORT_PROMPT = PDF_EXPORT_PROMPTS.unellez;
 
 export const GLOSSARY_TERMS = [
   { term: 'Abstract', def: 'Resumen muy estructurado (200-300 palabras) de un artículo científico o TFG que condensa objetivos, metodología, resultados y conclusiones.' },

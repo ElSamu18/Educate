@@ -75,7 +75,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPdfModal }) => {
               Recursos de Maquetación
             </h4>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Descarga o copia las directrices para maquetar en formato A4 con proporciones estandarizadas para imprimir o exportar a PDF.
+              Descarga o copia las directrices para maquetar en formato Carta (Letter) con proporciones oficiales para imprimir o exportar a PDF (UNELLEZ Res. CD330 / Normas APA 7).
             </p>
             <button
               onClick={onOpenPdfModal}
